@@ -1,1 +1,7 @@
-<p>weather-details works!</p>
+<div *ngIf="avgWeather" class="container">
+  <div class="title">{{ cityName.name }}, {{ cityName.country }}</div>
+  <div class="subHeader">{{ getDay(transformedWeatherData[0]) }}</div>
+  <div class="subHeader">
+    {{ getWeatherDescription(transformedWeatherData[0]) }}
+  </div>
+</div>
