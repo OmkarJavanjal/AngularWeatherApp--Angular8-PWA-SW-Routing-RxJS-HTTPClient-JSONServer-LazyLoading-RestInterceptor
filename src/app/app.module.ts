@@ -6,13 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { httpInterceptorProviders } from './shared/Interceptors';
 import { SelectCityComponent } from './select-city/select-city.component';
-import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './common/organism/page-not-found/page-not-found.component';
+import { DropDownListComponent } from './common/atom/drop-down-list/drop-down-list.component';
+import { HomeComponent } from './home/home.component';
+import { WeatherDetailsComponent } from './weather-details/weather-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SelectCityComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DropDownListComponent,
+    HomeComponent,
+    WeatherDetailsComponent
   ],
   imports: [
     BrowserModule,

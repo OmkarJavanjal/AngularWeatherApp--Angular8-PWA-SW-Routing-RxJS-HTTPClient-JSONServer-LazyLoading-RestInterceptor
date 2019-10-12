@@ -1,0 +1,8 @@
+<div>
+  <div>
+    <app-select-city (cityName)="onCitySelect($event)"></app-select-city>
+  </div>
+  <div *ngIf="cityName">
+    <app-weather-details [cityName]="cityName"></app-weather-details>
+  </div>
+</div>
