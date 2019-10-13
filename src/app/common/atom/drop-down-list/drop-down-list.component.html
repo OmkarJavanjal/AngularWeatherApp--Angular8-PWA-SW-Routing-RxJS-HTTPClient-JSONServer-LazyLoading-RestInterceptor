@@ -1,5 +1,4 @@
 <select class="dropDownSize" (change)="onClickSubmit($event.target.value)">
-  <option value="0">--All--</option>
   <option *ngFor="let city of cities" value="{{ city }}">
     {{ city }}
   </option>

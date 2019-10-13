@@ -1,0 +1,33 @@
+.brakdownWidgetWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f0f0f0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100px;
+  margin-top: 20px;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.subHeader {
+  font-size: medium !important;
+  font-weight: lighter !important;
+  color: #878787 !important;
+  font-family: arial, sans-serif;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.imageWrapper {
+  float: left;
+  height: 100px;
+  width: 100px;
+  padding-right: 10px;
+}
+
+.windAngle {
+  transform: rotateZ(windDegree deg);
+}

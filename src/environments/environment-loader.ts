@@ -5,7 +5,7 @@ export class EnvironmentLoader {
     const url = document.location.hostname;
     let baseUrl = "";
     let mockUrl = "";
-    let mockingSet = true;
+    let mockingSet = false;
     const token = "&APPID=ae88b071a4ee8a15bad2dea3c30c3c92";
     const prodState = true;
     let envName = "local";

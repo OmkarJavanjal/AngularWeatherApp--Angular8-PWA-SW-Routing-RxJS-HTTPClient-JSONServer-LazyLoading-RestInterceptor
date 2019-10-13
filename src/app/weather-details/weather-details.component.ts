@@ -13,7 +13,7 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   public weatherData;
   public avgWeather;
   public transformedWeatherData;
-  public activeBtn = "temperature";
+  public activeBtn = "wind"; //"temperature";
   public selectedUnit = "C";
 
   public options = [
@@ -31,7 +31,7 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
     }
   ];
 
-  constructor(private genericService: GenericServiceService) {}
+  constructor(private genericService?: GenericServiceService) {}
 
   ngOnInit() {}
 

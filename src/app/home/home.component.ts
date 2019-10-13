@@ -6,7 +6,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  public cityName;
+  public cityName = {
+    id: 1270260,
+    name: "State of Haryāna",
+    country: "IN",
+    coord: {
+      lon: 76,
+      lat: 29
+    }
+  };
   constructor() {}
 
   ngOnInit() {}

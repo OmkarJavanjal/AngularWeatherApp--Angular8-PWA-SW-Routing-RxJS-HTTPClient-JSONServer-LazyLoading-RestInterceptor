@@ -35,15 +35,24 @@
     <div class="weatherDetailsWrapper">
       <div class="subHeader">Humidity: {{ avgWeather.humidity }} %</div>
       <div class="buttonsWrapper">
-        <ng-container *ngFor="let option of options">
-          <app-radio-button
-            [option]="option"
-            [selectedValue]="activeBtn"
-            (buttonValue)="handleChangeSelectedOption($event)"
-          >
-          </app-radio-button>
-        </ng-container>
+        <app-radio-button
+          *ngFor="let option of options"
+          [option]="option"
+          [selectedValue]="activeBtn"
+          (buttonValue)="handleChangeSelectedOption($event)"
+        >
+        </app-radio-button>
       </div>
+    </div>
+    <div class="breakDownsContainer">
+      <app-weather-details-list
+        *ngFor="let data of transformedWeatherData"
+        [transformedWeatherData]="transformedWeatherData"
+        [activeButton]="activeBtn"
+        [avgWeatherData]="avgWeather"
+        [data]="data"
+        [selectedUnit]="selectedUnit"
+      ></app-weather-details-list>
     </div>
   </div>
 </div>
