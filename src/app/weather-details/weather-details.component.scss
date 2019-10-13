@@ -19,3 +19,59 @@
   line-height: 1.2;
   text-align: left;
 }
+
+.detailsWrapper {
+  padding: 10px 0px;
+}
+
+.imageWrapper {
+  float: left;
+  height: 100px;
+  width: 100px;
+  padding-right: 10px;
+}
+
+.temperatureWrapper {
+  float: left;
+  display: flex;
+  align-items: flex-start;
+}
+
+.temperature {
+  font-size: 64px;
+  color: #212121 !important;
+}
+.unit {
+  font-size: 16px;
+  color: #212121 !important;
+}
+
+.weatherDetailsWrapper {
+  float: right;
+  padding: 10px;
+}
+
+.buttonSwitch {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  margin-right: 10px;
+  outline: none;
+}
+
+.buttonsWrapper {
+  padding-top: 10px;
+  display: flex;
+}
+
+.radio {
+  margin-right: 10px;
+}
+
+.link {
+  color: blue;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

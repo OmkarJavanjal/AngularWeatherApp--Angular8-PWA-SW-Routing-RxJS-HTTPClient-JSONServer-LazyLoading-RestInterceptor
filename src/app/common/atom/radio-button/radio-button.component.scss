@@ -1,0 +1,16 @@
+.radio {
+  border: 1px solid #f0f0f0;
+  background-color: #f0f0f0;
+  padding: 5px;
+  display: block;
+  &:hover {
+    background-color: #52ceb4;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.active {
+  background-color: #52ceb4;
+  color: white;
+}

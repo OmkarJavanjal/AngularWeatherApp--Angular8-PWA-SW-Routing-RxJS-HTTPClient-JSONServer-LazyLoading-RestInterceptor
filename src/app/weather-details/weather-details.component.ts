@@ -13,8 +13,10 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   public weatherData;
   public avgWeather;
   public transformedWeatherData;
+  public activeBtn = "temperature";
+  public selectedUnit = "C";
 
-  options = [
+  public options = [
     {
       label: "Temperature",
       value: "temperature"
@@ -34,13 +36,13 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges() {
-    console.log("wd cityname: " + this.cityName);
+    console.log("wd cityname: " + this.cityName.name);
     this.genericService
       .getServiceResponse(
         env.mocking
           ? env.appWeatherURLs.getForecastUrl2
           : env.appWeatherURLs.getForecastUrl,
-        this.cityName
+        this.cityName.name
       )
       .subscribe(data => {
         console.log("weather data: ", data);
@@ -49,7 +51,8 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
           this.weatherData.list
         );
         console.log("transformedData: ", this.transformedWeatherData);
-        this.avgWeather = this.getAverageDetails(this.transformWeatherData);
+        this.avgWeather = this.getAverageDetails(this.transformedWeatherData);
+        console.log("avgWeatherdata: ", this.avgWeather);
       });
   }
 
@@ -124,18 +127,26 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
     return item && item.wind && item.wind.degree;
   };
 
-  // getTemperature = (temperature) => {
-  //     if (!temperature) return 0;
-  //     const { selectedUnit } = this.state;
-  //     if (selectedUnit === 'K') return parseInt(temperature, 10);
-  //     else {
-  //         const kTemp = parseInt(temperature, 10);
-  //         return parseInt(kTemp - 273);
-  //     }
-  // }
+  getTemperature = temperature => {
+    if (!temperature) return 0;
+    if (this.selectedUnit === "K") return parseInt(temperature, 10);
+    else {
+      const kTemp = parseInt(temperature, 10);
+      return kTemp - 273;
+    }
+  };
+
+  setSelectedUnit(unit) {
+    this.selectedUnit = unit;
+  }
 
   getIconImageUrl = item => {
     if (!item) return "";
     return `http://openweathermap.org/img/wn/${item.weatherIcon}@2x.png`;
+  };
+
+  handleChangeSelectedOption = value => {
+    this.activeBtn = value;
+    console.log("btnval: ", this.activeBtn);
   };
 }

@@ -10,6 +10,8 @@ import { PageNotFoundComponent } from './common/organism/page-not-found/page-not
 import { DropDownListComponent } from './common/atom/drop-down-list/drop-down-list.component';
 import { HomeComponent } from './home/home.component';
 import { WeatherDetailsComponent } from './weather-details/weather-details.component';
+import { WeatherListComponent } from './weather-list/weather-list.component';
+import { RadioButtonComponent } from './common/atom/radio-button/radio-button.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { WeatherDetailsComponent } from './weather-details/weather-details.compo
     PageNotFoundComponent,
     DropDownListComponent,
     HomeComponent,
-    WeatherDetailsComponent
+    WeatherDetailsComponent,
+    WeatherListComponent,
+    RadioButtonComponent
   ],
   imports: [
     BrowserModule,

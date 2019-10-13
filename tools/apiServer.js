@@ -3,7 +3,7 @@ const jsonServer = require("json-server");
 const server = jsonServer.create();
 const path = require("path");
 const router = jsonServer.router(path.join(__dirname, "db.json"));
-const cors = require('cors')({origin: true});
+const cors = require("cors")({ origin: true });
 
 // Can pass a limited number of options to this to override (some) defaults. See https://github.com/typicode/json-server#api
 const middlewares = jsonServer.defaults();
@@ -19,7 +19,7 @@ server.use(jsonServer.bodyParser);
 
 // Simulate delay on all requests
 server.use(function(req, res, next) {
-  setTimeout(next, 2000);    //add delay to simulate rela time sapi call like experiance
+  setTimeout(next, 000); //add delay to simulate rela time sapi call like experiance
 });
 
 // Declaring custom routes below. Add custom routes before JSON Server router
@@ -33,7 +33,6 @@ server.use((req, res, next) => {
   next();
 });
 
-
 // Use default router
 server.use(router);
 
@@ -42,4 +41,3 @@ const port = 3004;
 server.listen(port, () => {
   console.log(`JSON Server is running on port ${port}`);
 });
-

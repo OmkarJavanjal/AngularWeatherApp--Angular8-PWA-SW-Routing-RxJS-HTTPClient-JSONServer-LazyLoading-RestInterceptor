@@ -1,0 +1,7 @@
+<label
+  class="radio"
+  [ngClass]="selectedValue === option.value ? 'active' : ''"
+  (click)="onClickSelect($event)"
+>
+  {{ option.label }}
+</label>
