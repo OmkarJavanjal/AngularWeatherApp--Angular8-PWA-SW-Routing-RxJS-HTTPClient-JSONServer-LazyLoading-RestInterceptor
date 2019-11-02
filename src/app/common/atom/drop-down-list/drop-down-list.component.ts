@@ -7,6 +7,7 @@ import {
   AfterContentChecked
 } from "@angular/core";
 import { map } from "rxjs/operators";
+import { GenericServiceService } from "src/app/shared/services/generic-service.service";
 
 @Component({
   selector: "app-drop-down-list",
@@ -18,11 +19,14 @@ export class DropDownListComponent implements OnInit, AfterContentChecked {
   @Input() cityList: any;
   @Output() cityName = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(private genericService: GenericServiceService) {}
 
   ngOnInit() {
-    this.cityList.list.forEach(obj => {
-      this.cities.push(obj.name);
+    this.genericService.isCityListAvl.subscribe(res => {
+      this.cityList = res;
+      this.cityList.list.forEach(obj => {
+        this.cities.push(obj.name);
+      });
     });
 
     //this.onClickSubmit(this.cityList.list[0].name);

@@ -1,54 +1,57 @@
-<div *ngIf="avgWeather" class="container">
-  <div class="title">{{ cityName.name }}, {{ cityName.country }}</div>
-  <div class="subHeader">{{ getDay(transformedWeatherData[0]) }}</div>
-  <div class="subHeader">
-    {{ getWeatherDescription() }}
-  </div>
-  <div class="detailsWrapper">
-    <div class="imageWrapper">
-      <img
-        src="{{ getIconImageUrl() }}"
-        width="100%"
-        height="100%"
-        alt="weather"
-      />
+<div class="container">
+  <div *ngIf="!avgWeather" class="loader"></div>
+  <div *ngIf="avgWeather">
+    <div class="title">{{ cityName.name }}, {{ cityName.country }}</div>
+    <div class="subHeader">{{ getDay(transformedWeatherData[0]) }}</div>
+    <div class="subHeader">
+      {{ getWeatherDescription() }}
     </div>
-    <div class="temperatureWrapper">
-      <div class="temperature">
-        {{ getTemperature() }}
+    <div class="detailsWrapper">
+      <div class="imageWrapper">
+        <img
+          src="{{ getIconImageUrl() }}"
+          width="100%"
+          height="100%"
+          alt="weather"
+        />
       </div>
-      <div>
-        <span *ngIf="selectedUnit === 'K'"
-          ><label class="link" (click)="setSelectedUnit('C')">°C</label> |
-          °K</span
-        >
-        <span *ngIf="selectedUnit === 'C'">
-          °C |
-          <label class="link" (click)="setSelectedUnit('K')">°K</label></span
-        >
+      <div class="temperatureWrapper">
+        <div class="temperature">
+          {{ getTemperature() }}
+        </div>
+        <div>
+          <span *ngIf="selectedUnit === 'K'"
+            ><label class="link" (click)="setSelectedUnit('C')">°C</label> |
+            °K</span
+          >
+          <span *ngIf="selectedUnit === 'C'">
+            °C |
+            <label class="link" (click)="setSelectedUnit('K')">°K</label></span
+          >
+        </div>
       </div>
-    </div>
-    <div class="weatherDetailsWrapper">
-      <div class="subHeader">Humidity: {{ avgWeather.humidity }} %</div>
-      <div class="buttonsWrapper">
-        <app-radio-button
-          *ngFor="let option of options"
-          [option]="option"
-          [selectedValue]="activeBtn"
-          (buttonValue)="handleChangeSelectedOption($event)"
-        >
-        </app-radio-button>
+      <div class="weatherDetailsWrapper">
+        <div class="subHeader">Humidity: {{ avgWeather.humidity }} %</div>
+        <div class="buttonsWrapper">
+          <app-radio-button
+            *ngFor="let option of options"
+            [option]="option"
+            [selectedValue]="activeBtn"
+            (buttonValue)="handleChangeSelectedOption($event)"
+          >
+          </app-radio-button>
+        </div>
       </div>
-    </div>
-    <div class="breakDownsContainer">
-      <app-weather-details-list
-        *ngFor="let data of transformedWeatherData"
-        [transformedWeatherData]="transformedWeatherData"
-        [activeButton]="activeBtn"
-        [avgWeatherData]="avgWeather"
-        [data]="data"
-        [selectedUnit]="selectedUnit"
-      ></app-weather-details-list>
+      <div class="breakDownsContainer">
+        <app-weather-details-list
+          *ngFor="let data of transformedWeatherData"
+          [transformedWeatherData]="transformedWeatherData"
+          [activeButton]="activeBtn"
+          [avgWeatherData]="avgWeather"
+          [data]="data"
+          [selectedUnit]="selectedUnit"
+        ></app-weather-details-list>
+      </div>
     </div>
   </div>
 </div>

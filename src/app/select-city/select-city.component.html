@@ -1,9 +1,6 @@
-<div>
-  <div *ngIf="cityList && cityList.list && cityList.list.length > 0">
-    <strong> Select City: </strong>
-    <app-drop-down-list
-      (cityName)="onCitySelect($event)"
-      [cityList]="cityList"
-    ></app-drop-down-list>
-  </div>
-</div>
+<strong> Select City: </strong>
+<app-drop-down-list
+  class="selectWrapper"
+  (cityName)="onCitySelect($event)"
+  [cityList]="cityList"
+></app-drop-down-list>

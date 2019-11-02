@@ -22,6 +22,7 @@ export class SelectCityComponent implements OnInit {
       .subscribe(data => {
         console.log("city data", data);
         this.cityList = data;
+        this.genericService.isCityListAvl.next(this.cityList);
       });
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { GenericServiceService } from "../shared/services/generic-service.service";
 import { env } from "src/environments/environment-loader";
 import * as moment from "moment";
+import { LogService } from "../shared/services/log.service";
 
 @Component({
   selector: "app-weather-details",
@@ -31,11 +32,15 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
     }
   ];
 
-  constructor(private genericService?: GenericServiceService) {}
+  constructor(
+    private genericService?: GenericServiceService,
+    private logService?: LogService
+  ) {}
 
   ngOnInit() {}
 
   ngOnChanges() {
+    this.avgWeather = null;
     console.log("wd cityname: " + this.cityName.name);
     this.genericService
       .getServiceResponse(
@@ -54,6 +59,16 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
         this.avgWeather = this.getAverageDetails(this.transformedWeatherData);
         console.log("avgWeatherdata: ", this.avgWeather);
       });
+
+    // console.log("view in");
+    // let obj = {
+    //   message: this.logService.getMessages
+    // };
+    // this.genericService
+    //   .getServiceResponse(env.cityList.logs, obj)
+    //   .subscribe(res => {
+    //     console.log("resp: ", res);
+    //   });
   }
 
   transformWeatherData = weatherData => {

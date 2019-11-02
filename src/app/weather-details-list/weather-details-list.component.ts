@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { WeatherDetailsComponent } from "../weather-details/weather-details.component";
 import * as moment from "moment";
+import { LogService } from "./../shared/services/log.service";
+import { env } from "src/environments/environment-loader";
+import { GenericServiceService } from "./../shared/services/generic-service.service";
 
 @Component({
   selector: "app-weather-details-list",
