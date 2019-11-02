@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 export class HomeComponent implements OnInit {
   public cityName = {
     id: 1270260,
-    name: "State of Haryāna",
+    name: "Pune",
     country: "IN",
     coord: {
       lon: 76,

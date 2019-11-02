@@ -1196,7 +1196,7 @@ const cities = {
   "list": [
     {
       "id": 1270260,
-      "name": "State of Haryāna",
+      "name": "Pune",
       "country": "IN",
       "coord": {
         "lon": 76,
@@ -1205,7 +1205,7 @@ const cities = {
     },
     {
       "id": 1269750,
-      "name": "Republic of India",
+      "name": "Sangole",
       "country": "IN",
       "coord": {
         "lon": 77,
@@ -1214,7 +1214,7 @@ const cities = {
     },
     {
       "id": 1271231,
-      "name": "Ghūra",
+      "name": "Solapur",
       "country": "IN",
       "coord": {
         "lon": 79.883331,
@@ -1223,7 +1223,7 @@ const cities = {
     },
     {
       "id": 1257986,
-      "name": "Rumbak",
+      "name": "Mumbai",
       "country": "IN",
       "coord": {
         "lon": 77.416664,
@@ -1232,7 +1232,7 @@ const cities = {
     },
     {
       "id": 1348747,
-      "name": "Bankra",
+      "name": "Delhi",
       "country": "IN",
       "coord": {
         "lon": 88.298058,
@@ -1241,7 +1241,7 @@ const cities = {
     },
     {
       "id": 1252738,
-      "name": "Yeola",
+      "name": "Chennai",
       "country": "IN",
       "coord": {
         "lon": 74.48333,
@@ -1250,8 +1250,8 @@ const cities = {
     },
     {
       "id": 1252744,
-      "name": "Yellapur",
-      "country": "IN",
+      "name": "New York",
+      "country": "USA",
       "coord": {
         "lon": 74.716667,
         "lat": 14.96667
@@ -1259,8 +1259,8 @@ const cities = {
     },
     {
       "id": 1252773,
-      "name": "Yaval",
-      "country": "IN",
+      "name": "Hartford",
+      "country": "USA",
       "coord": {
         "lon": 75.699997,
         "lat": 21.16667
@@ -1268,8 +1268,8 @@ const cities = {
     },
     {
       "id": 1252840,
-      "name": "Wokha",
-      "country": "IN",
+      "name": "London",
+      "country": "UK",
       "coord": {
         "lon": 94.26667,
         "lat": 26.1
@@ -1277,7 +1277,7 @@ const cities = {
     },
     {
       "id": 1252925,
-      "name": "Warora",
+      "name": "Thane",
       "country": "IN",
       "coord": {
         "lon": 79,
@@ -1286,7 +1286,7 @@ const cities = {
     },
     {
       "id": 1252946,
-      "name": "Waraseoni",
+      "name": "Kolkata",
       "country": "IN",
       "coord": {
         "lon": 80.033333,
@@ -1295,7 +1295,7 @@ const cities = {
     },
     {
       "id": 1253041,
-      "name": "Wadi",
+      "name": "Panaji",
       "country": "IN",
       "coord": {
         "lon": 76.98333,
