@@ -1,4 +1,4 @@
-import { Environment } from "./environment";
+import { EnvironmentSetup } from "./environment.prod";
 
 export class EnvironmentLoader {
   static getEnvironmentFile(): any {
@@ -22,7 +22,7 @@ export class EnvironmentLoader {
       mockUrl = "http://localhost:3004/";
     }
 
-    return new Environment(
+    return new EnvironmentSetup(
       baseUrl,
       mockUrl,
       envName,
