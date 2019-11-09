@@ -131,7 +131,26 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   // };
 
   getWeatherDescription = () => {
-    let hrs = new Date().getHours();
+    /*Time by timezone'*/
+    let newDate = new Date();
+    let utcDtInMS = new Date(
+      newDate.getUTCMonth() +
+        1 +
+        "/" +
+        newDate.getUTCDate() +
+        "/" +
+        newDate.getUTCFullYear()
+    ).getTime();
+    let utcTimeInMS =
+      (newDate.getUTCHours() * 3600 +
+        newDate.getUTCMinutes() * 60 +
+        newDate.getUTCSeconds()) *
+        1000 +
+      newDate.getUTCMilliseconds();
+    let utcTime = utcDtInMS + utcTimeInMS;
+    let time = utcTime + this.weatherData.city.timezone * 1000;
+    let hrs = new Date(time).getHours();
+
     let curWeatherMain = this.transformedWeatherData.filter(
       (item, index, arr) => {
         let hr1 = new Date(item.date).getHours();
@@ -161,7 +180,7 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
 
   // getTemperature = temperature => {
   //   if (!temperature) return 0;
-  //   if (this.selectedUnit === "K") return parseInt(temperature, 10);
+  //   if (this.sselectedUnit === "K") return parseInt(temperature, 10);
   //   else {
   //     const kTemp = parseInt(temperature, 10);
   //     return kTemp - 273;
@@ -169,7 +188,26 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   // };
 
   getTemperature = () => {
-    let hrs = new Date().getHours();
+    /*Time by timezone'*/
+    let newDate = new Date();
+    let utcDtInMS = new Date(
+      newDate.getUTCMonth() +
+        1 +
+        "/" +
+        newDate.getUTCDate() +
+        "/" +
+        newDate.getUTCFullYear()
+    ).getTime();
+    let utcTimeInMS =
+      (newDate.getUTCHours() * 3600 +
+        newDate.getUTCMinutes() * 60 +
+        newDate.getUTCSeconds()) *
+        1000 +
+      newDate.getUTCMilliseconds();
+    let utcTime = utcDtInMS + utcTimeInMS;
+    let time = utcTime + this.weatherData.city.timezone * 1000;
+    let hrs = new Date(time).getHours();
+
     let curTemp = this.transformedWeatherData.filter((item, index, arr) => {
       let hr1 = new Date(item.date).getHours();
       let hr2 = new Date(
@@ -198,7 +236,26 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   // };
 
   getIconImageUrl = () => {
-    let hrs = new Date().getHours();
+    /*Time by timezone'*/
+    let newDate = new Date();
+    let utcDtInMS = new Date(
+      newDate.getUTCMonth() +
+        1 +
+        "/" +
+        newDate.getUTCDate() +
+        "/" +
+        newDate.getUTCFullYear()
+    ).getTime();
+    let utcTimeInMS =
+      (newDate.getUTCHours() * 3600 +
+        newDate.getUTCMinutes() * 60 +
+        newDate.getUTCSeconds()) *
+        1000 +
+      newDate.getUTCMilliseconds();
+    let utcTime = utcDtInMS + utcTimeInMS;
+    let time = utcTime + this.weatherData.city.timezone * 1000;
+    let hrs = new Date(time).getHours();
+
     let curWeatherIcon = this.transformedWeatherData.filter(
       (item, index, arr) => {
         let hr1 = new Date(item.date).getHours();
