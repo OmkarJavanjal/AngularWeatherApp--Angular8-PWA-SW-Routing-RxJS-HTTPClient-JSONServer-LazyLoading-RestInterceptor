@@ -50,14 +50,14 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
         this.cityName.name
       )
       .subscribe(data => {
-        console.log("weather data: ", data);
+        //console.log("weather data: ", data);
         this.weatherData = data;
         this.transformedWeatherData = this.transformWeatherData(
           this.weatherData.list
         );
-        console.log("transformedData: ", this.transformedWeatherData);
+        //console.log("transformedData: ", this.transformedWeatherData);
         this.avgWeather = this.getAverageDetails(this.transformedWeatherData);
-        console.log("avgWeatherdata: ", this.avgWeather);
+        //console.log("avgWeatherdata: ", this.avgWeather);
       });
 
     // console.log("view in");

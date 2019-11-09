@@ -6,21 +6,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./home.component.scss"]
 })
 export class HomeComponent implements OnInit {
-  public cityName = {
-    id: 1270260,
-    name: "Pune",
-    country: "IN",
-    coord: {
-      lon: 76,
-      lat: 29
-    }
-  };
+  public cityName;
   constructor() {}
 
   ngOnInit() {}
 
   onCitySelect(cityName) {
-    console.log(cityName);
+    //console.log(cityName);
     this.cityName = cityName;
   }
 }

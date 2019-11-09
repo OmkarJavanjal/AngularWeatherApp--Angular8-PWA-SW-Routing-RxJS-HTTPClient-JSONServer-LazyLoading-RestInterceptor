@@ -1192,8 +1192,7 @@ const forecast = {
 	}
 }
 
-const cities = {
-  "list": [
+const cities = [
     {
       "id": 1270260,
       "name": "Pune",
@@ -1402,7 +1401,7 @@ const cities = {
       }
     }
   ]
-}
+
 
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {

@@ -18,16 +18,19 @@ export class SelectCityComponent implements OnInit {
 
   getCityList() {
     this.genericService
-      .getServiceResponse(env.cityList.getcities)
+      .getServiceResponse(
+        env.mocking ? env.cityList.getcitiesMock : env.cityList.getcities
+      )
       .subscribe(data => {
-        console.log("city data", data);
+        //console.log("city data", data);
         this.cityList = data;
         this.genericService.isCityListAvl.next(this.cityList);
+        this.cityName.emit(this.cityList[0]);
       });
   }
 
   onCitySelect(cityName) {
-    console.log(cityName);
+    //console.log(cityName);
     this.cityName.emit(cityName);
   }
 }

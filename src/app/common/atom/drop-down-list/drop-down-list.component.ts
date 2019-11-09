@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { map } from "rxjs/operators";
 import { GenericServiceService } from "src/app/shared/services/generic-service.service";
+import { CityListURL } from "./../../../../environments/urlFactory/city-list";
 
 @Component({
   selector: "app-drop-down-list",
@@ -24,7 +25,7 @@ export class DropDownListComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
     this.genericService.isCityListAvl.subscribe(res => {
       this.cityList = res;
-      this.cityList.list.forEach(obj => {
+      this.cityList.forEach(obj => {
         this.cities.push(obj.name);
       });
     });
@@ -39,13 +40,14 @@ export class DropDownListComponent implements OnInit, AfterContentChecked {
   }
 
   onClickSubmit(cityName) {
-    let cityObj = this.cityList.list.filter(cities => {
-      if (cities.name == cityName) {
-        return cities;
-      }
+    let cityObj = this.cityList.find(cities => {
+      //replaced filter with find
+      return cities.name == cityName ? cities : null;
+      // if (cities.name == cityName) {
+      //   return cities;
+      // }
     });
-    console.log("cityObj", cityObj);
-
-    this.cityName.emit(cityObj[0]);
+    //console.log("cityObj", cityObj);
+    this.cityName.emit(cityObj);
   }
 }
