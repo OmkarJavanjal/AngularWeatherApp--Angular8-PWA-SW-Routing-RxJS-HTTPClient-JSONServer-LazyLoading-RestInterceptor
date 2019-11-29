@@ -12,6 +12,8 @@ import { HomeComponent } from "./home/home.component";
 import { WeatherDetailsComponent } from "./weather-details/weather-details.component";
 import { RadioButtonComponent } from "./common/atom/radio-button/radio-button.component";
 import { WeatherDetailsListComponent } from "./weather-details-list/weather-details-list.component";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { WeatherDetailsListComponent } from "./weather-details-list/weather-deta
     RadioButtonComponent,
     WeatherDetailsListComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })

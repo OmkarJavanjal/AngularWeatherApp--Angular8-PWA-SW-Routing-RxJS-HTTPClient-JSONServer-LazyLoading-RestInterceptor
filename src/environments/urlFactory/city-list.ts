@@ -8,7 +8,7 @@ export class CityListURL extends AppBase {
       getcitiesMock: { url: this.getMockUrl() + "cities", httpMethod: "GET" },
       getcities: {
         url:
-          "https://us-central1-weatherapp-6ce0c.cloudfunctions.net/main/list?_limit=15&q=a",
+          "https://my-json-server.typicode.com/OmkarJavanjal/onlineFakeAPIAndDatabase/cityList",
         httpMethod: "GET"
       },
       logs: { url: this.getMockUrl() + "logs", httpMethod: "POST" }
