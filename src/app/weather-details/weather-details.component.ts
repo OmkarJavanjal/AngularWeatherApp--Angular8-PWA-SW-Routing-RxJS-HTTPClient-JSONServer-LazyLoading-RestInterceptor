@@ -35,9 +35,9 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   constructor(
     private genericService?: GenericServiceService,
     private logService?: LogService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ngOnChanges() {
     this.avgWeather = null;
@@ -135,34 +135,33 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
     let newDate = new Date();
     let utcDtInMS = new Date(
       newDate.getUTCMonth() +
-        1 +
-        "/" +
-        newDate.getUTCDate() +
-        "/" +
-        newDate.getUTCFullYear()
+      1 +
+      "/" +
+      newDate.getUTCDate() +
+      "/" +
+      newDate.getUTCFullYear()
     ).getTime();
     let utcTimeInMS =
       (newDate.getUTCHours() * 3600 +
         newDate.getUTCMinutes() * 60 +
         newDate.getUTCSeconds()) *
-        1000 +
+      1000 +
       newDate.getUTCMilliseconds();
     let utcTime = utcDtInMS + utcTimeInMS;
     let time = utcTime + this.weatherData.city.timezone * 1000;
     let hrs = new Date(time).getHours();
-
     let curWeatherMain = this.transformedWeatherData.filter(
       (item, index, arr) => {
         let hr1 = new Date(item.date).getHours();
         let hr2 = new Date(
           this.transformedWeatherData[index != 39 ? index + 1 : index].date
         ).getHours();
-        if (hrs >= hr1 && hrs < hr2) {
+        if ((hrs >= hr1 && hrs < hr2) || (hr2 === 0 && hrs >= hr1)) {
           return item;
         }
       }
     );
-    let desc = curWeatherMain[0].weatherMain;
+    let desc = curWeatherMain && curWeatherMain.length ? curWeatherMain[0].weatherMain : this.transformedWeatherData[0].weatherMain;
     return desc;
   };
 
@@ -192,17 +191,17 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
     let newDate = new Date();
     let utcDtInMS = new Date(
       newDate.getUTCMonth() +
-        1 +
-        "/" +
-        newDate.getUTCDate() +
-        "/" +
-        newDate.getUTCFullYear()
+      1 +
+      "/" +
+      newDate.getUTCDate() +
+      "/" +
+      newDate.getUTCFullYear()
     ).getTime();
     let utcTimeInMS =
       (newDate.getUTCHours() * 3600 +
         newDate.getUTCMinutes() * 60 +
         newDate.getUTCSeconds()) *
-        1000 +
+      1000 +
       newDate.getUTCMilliseconds();
     let utcTime = utcDtInMS + utcTimeInMS;
     let time = utcTime + this.weatherData.city.timezone * 1000;
@@ -213,11 +212,11 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
       let hr2 = new Date(
         this.transformedWeatherData[index != 39 ? index + 1 : index].date
       ).getHours();
-      if (hrs >= hr1 && hrs < hr2) {
+      if ((hrs >= hr1 && hrs < hr2) || (hr2 === 0 && hrs >= hr1)) {
         return item;
       }
     });
-    let temperature = curTemp[0].temperature;
+    let temperature = curTemp && curTemp.length ? curTemp[0].temperature : this.transformedWeatherData[0].temperature;
     if (!temperature) return 0;
     if (this.selectedUnit === "K") return parseInt(temperature, 10);
     else {
@@ -240,17 +239,17 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
     let newDate = new Date();
     let utcDtInMS = new Date(
       newDate.getUTCMonth() +
-        1 +
-        "/" +
-        newDate.getUTCDate() +
-        "/" +
-        newDate.getUTCFullYear()
+      1 +
+      "/" +
+      newDate.getUTCDate() +
+      "/" +
+      newDate.getUTCFullYear()
     ).getTime();
     let utcTimeInMS =
       (newDate.getUTCHours() * 3600 +
         newDate.getUTCMinutes() * 60 +
         newDate.getUTCSeconds()) *
-        1000 +
+      1000 +
       newDate.getUTCMilliseconds();
     let utcTime = utcDtInMS + utcTimeInMS;
     let time = utcTime + this.weatherData.city.timezone * 1000;
@@ -262,12 +261,12 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
         let hr2 = new Date(
           this.transformedWeatherData[index != 39 ? index + 1 : index].date
         ).getHours();
-        if (hrs >= hr1 && hrs < hr2) {
+        if ((hrs >= hr1 && hrs < hr2) || (hr2 === 0 && hrs >= hr1)) {
           return item;
         }
       }
     );
-    let weatherIcon = curWeatherIcon[0].weatherIcon;
+    let weatherIcon = curWeatherIcon && curWeatherIcon.length ? curWeatherIcon[0].weatherIcon : this.transformedWeatherData[0].weatherIcon;
     if (!weatherIcon) return "";
     return `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
   };
