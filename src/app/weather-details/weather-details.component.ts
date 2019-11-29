@@ -16,6 +16,7 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   public transformedWeatherData;
   public activeBtn = "temperature";
   public selectedUnit = "C";
+  public currentWeather;
 
   public options = [
     {
@@ -58,6 +59,7 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
         //console.log("transformedData: ", this.transformedWeatherData);
         this.avgWeather = this.getAverageDetails(this.transformedWeatherData);
         //console.log("avgWeatherdata: ", this.avgWeather);
+        this.currentWeather = this.getCurrentWeatherData();
       });
 
     // console.log("view in");
@@ -129,8 +131,7 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   // getWeatherDescription = item => {
   //   return item && item.weatherMain;
   // };
-
-  getWeatherDescription = () => {
+  getCurrentWeatherData() {
     /*Time by timezone'*/
     let newDate = new Date();
     let utcDtInMS = new Date(
@@ -150,7 +151,8 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
     let utcTime = utcDtInMS + utcTimeInMS;
     let time = utcTime + this.weatherData.city.timezone * 1000;
     let hrs = new Date(time).getHours();
-    let curWeatherMain = this.transformedWeatherData.filter(
+
+    return this.transformedWeatherData.find(
       (item, index, arr) => {
         let hr1 = new Date(item.date).getHours();
         let hr2 = new Date(
@@ -161,8 +163,12 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
         }
       }
     );
-    let desc = curWeatherMain && curWeatherMain.length ? curWeatherMain[0].weatherMain : this.transformedWeatherData[0].weatherMain;
-    return desc;
+
+  }
+
+  getWeatherDescription = () => {
+
+    return this.currentWeather ? this.currentWeather.weatherMain : this.transformedWeatherData[0].weatherMain;
   };
 
   getHumidity = item => {
@@ -187,36 +193,8 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   // };
 
   getTemperature = () => {
-    /*Time by timezone'*/
-    let newDate = new Date();
-    let utcDtInMS = new Date(
-      newDate.getUTCMonth() +
-      1 +
-      "/" +
-      newDate.getUTCDate() +
-      "/" +
-      newDate.getUTCFullYear()
-    ).getTime();
-    let utcTimeInMS =
-      (newDate.getUTCHours() * 3600 +
-        newDate.getUTCMinutes() * 60 +
-        newDate.getUTCSeconds()) *
-      1000 +
-      newDate.getUTCMilliseconds();
-    let utcTime = utcDtInMS + utcTimeInMS;
-    let time = utcTime + this.weatherData.city.timezone * 1000;
-    let hrs = new Date(time).getHours();
 
-    let curTemp = this.transformedWeatherData.filter((item, index, arr) => {
-      let hr1 = new Date(item.date).getHours();
-      let hr2 = new Date(
-        this.transformedWeatherData[index != 39 ? index + 1 : index].date
-      ).getHours();
-      if ((hrs >= hr1 && hrs < hr2) || (hr2 === 0 && hrs >= hr1)) {
-        return item;
-      }
-    });
-    let temperature = curTemp && curTemp.length ? curTemp[0].temperature : this.transformedWeatherData[0].temperature;
+    let temperature = this.currentWeather ? this.currentWeather.temperature : this.transformedWeatherData[0].temperature;
     if (!temperature) return 0;
     if (this.selectedUnit === "K") return parseInt(temperature, 10);
     else {
@@ -235,44 +213,14 @@ export class WeatherDetailsComponent implements OnInit, OnChanges {
   // };
 
   getIconImageUrl = () => {
-    /*Time by timezone'*/
-    let newDate = new Date();
-    let utcDtInMS = new Date(
-      newDate.getUTCMonth() +
-      1 +
-      "/" +
-      newDate.getUTCDate() +
-      "/" +
-      newDate.getUTCFullYear()
-    ).getTime();
-    let utcTimeInMS =
-      (newDate.getUTCHours() * 3600 +
-        newDate.getUTCMinutes() * 60 +
-        newDate.getUTCSeconds()) *
-      1000 +
-      newDate.getUTCMilliseconds();
-    let utcTime = utcDtInMS + utcTimeInMS;
-    let time = utcTime + this.weatherData.city.timezone * 1000;
-    let hrs = new Date(time).getHours();
 
-    let curWeatherIcon = this.transformedWeatherData.filter(
-      (item, index, arr) => {
-        let hr1 = new Date(item.date).getHours();
-        let hr2 = new Date(
-          this.transformedWeatherData[index != 39 ? index + 1 : index].date
-        ).getHours();
-        if ((hrs >= hr1 && hrs < hr2) || (hr2 === 0 && hrs >= hr1)) {
-          return item;
-        }
-      }
-    );
-    let weatherIcon = curWeatherIcon && curWeatherIcon.length ? curWeatherIcon[0].weatherIcon : this.transformedWeatherData[0].weatherIcon;
+    let weatherIcon = this.currentWeather ? this.currentWeather.weatherIcon : this.transformedWeatherData[0].weatherIcon;
     if (!weatherIcon) return "";
-    return `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+    return `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
   };
 
   handleChangeSelectedOption = value => {
     this.activeBtn = value;
-    console.log("btnval: ", this.activeBtn);
+    //console.log("btnval: ", this.activeBtn);
   };
 }
