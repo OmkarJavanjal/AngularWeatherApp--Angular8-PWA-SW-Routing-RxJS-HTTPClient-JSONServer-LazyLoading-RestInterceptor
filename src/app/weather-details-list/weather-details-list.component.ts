@@ -25,7 +25,7 @@ export class WeatherDetailsListComponent implements OnInit {
   public speed;
   public averageSpeed;
   public windAngle;
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.date = moment(this.data.date);
@@ -47,7 +47,7 @@ export class WeatherDetailsListComponent implements OnInit {
 
   getIconImageUrl = item => {
     if (!item) return "";
-    return `http://openweathermap.org/img/wn/${item.weatherIcon}@2x.png`;
+    return `https://openweathermap.org/img/wn/${item.weatherIcon}@2x.png`;
   };
 
   getHumidity = item => {
