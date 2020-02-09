@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'component1', loadChildren: () => import('./LazyLoadingComponents/lazyLoad.module').then(module => module.LazyLoadModule)},
-  //{ path: 'component1', loadChildren: 'src/app/LazyLoadingComponents/lazyLoad.module#LazyLoadModule'}, //either works
+  //{ path: 'component1', loadChildren: 'src/app/LazyLoadingComponents/lazyLoad.module#LazyLoadModule'},  //either works
   { path: '**', component: PageNotFoundComponent }
 ];
 
